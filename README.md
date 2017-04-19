@@ -19,9 +19,14 @@
     
 
 ## SQL Clientの注意点
-    set names utf8mb4; /* change connection charset to utf8mb4 */
-    SELECT URLDECODE( convert('%E5%AD%99%E6%BD%8D%E6%BB%A8%F0%9F%A4%95' using utf8mb4))
+1.connectionの文字セットを「utf8mb4」に変更させる
 
-最終結果を下記オンラインツールによって、照合できる。
+　　　　　　　　set names utf8mb4; /* change connection charset to utf8mb4 */
+        
+2.使い方
+
+   　SELECT URLDECODE( convert('%E5%AD%99%E6%BD%8D%E6%BB%A8%F0%9F%A4%95' using utf8mb4))
+
+3.最終結果を下記オンラインツールによって、照合できる。
 
     http://www.urlencoder.urlencode.in/url/decoder/convert-string-to-date-java-mysql-url-decode
