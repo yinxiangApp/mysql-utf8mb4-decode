@@ -7,7 +7,7 @@
 
     http://tmtms.hatenablog.com/entry/2016/09/06/mysql-utf8
 
-## 上記によって、mysql1に「urldecode」というメソッドを用意してください。
+## 上記によって、mysqlに「urldecode」というメソッドを用意してください。
     CREATE DEFINER=`root`@`localhost` FUNCTION `urldecode`(s VARCHAR(4096)  CHARSET utf8mb4 ) RETURNS varchar(4096) CHARSET   utf8mb4
     DETERMINISTIC
     BEGIN
