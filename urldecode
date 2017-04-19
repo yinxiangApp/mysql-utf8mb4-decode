@@ -1,0 +1,29 @@
+CREATE DEFINER=`root`@`localhost` FUNCTION `urldecode`(s VARCHAR(4096)  CHARSET utf8mb4 ) RETURNS varchar(4096) CHARSET utf8mb4
+    DETERMINISTIC
+BEGIN
+       DECLARE c VARCHAR(4096) DEFAULT '';
+       DECLARE pointer INT DEFAULT 1;
+       DECLARE s2 VARCHAR(4096) DEFAULT '';
+       DECLARE h3 VARCHAR(4096) DEFAULT '';
+       declare exit handler for sqlexception return UNHEX('');
+
+       IF ISNULL(s) THEN
+          RETURN NULL;
+       ELSE
+       SET s2 = '';
+       WHILE pointer <= LENGTH(s) DO
+          SET c = SUBSTR(s,pointer,1);
+          IF c = '+' THEN
+             SET h3 = '20';
+          ELSEIF c = '%' AND pointer + 2 <= LENGTH(s) THEN
+                   SET h3 = UPPER(SUBSTR(s,pointer+1,2));
+                   SET pointer = pointer + 2;
+          ELSE
+                   SET h3 = HEX(c);
+          END IF;
+          SET s2 = CONCAT(s2,h3);
+          SET pointer = pointer + 1;
+       END while;
+       END IF;
+       RETURN UNHEX(s2);
+END
