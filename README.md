@@ -9,7 +9,7 @@
     http://tmtms.hatenablog.com/entry/2016/09/06/mysql-utf8
 
 ## 上記によって、mysqlに「urldecode」というメソッドを用意する。
-下記リンクを参照して、「urldecode」というメソッドを追加して、入力と出力パラメタを【utf8mb4】に修正する
+下記リンクを参照して、「urldecode」というメソッドを追加して、入力と出力パラメーターを【utf8mb4】に修正する
 
    　CREATE DEFINER=`root`@`localhost` FUNCTION `urldecode`(s VARCHAR(4096)) RETURNS varchar(4096) CHARSET  utf8
     
